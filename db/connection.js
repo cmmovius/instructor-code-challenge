@@ -24,3 +24,11 @@ var FavoriteSchema = new mongoose.Schema(
     Response: String
   }
 );
+
+mongoose.model("Favorite", FavoriteSchema);
+if(process.env.NODE_ENV == "production"){
+  mongoose.connect(process.env.MONGODB_URL);
+}else{
+  mongoose.connect("mongodb://localhost/codechallenge");
+}
+module.exports = mongoose;
