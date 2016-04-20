@@ -1,6 +1,7 @@
 var express = require('express');
-var bodyParser = require("body-parser");
 var fs = require('fs');
+var hbs = require("express-handlebars");
+var bodyParser = require("body-parser");
 // var path = require('path');
 // In addition to requiring these modules in this file, you also need to run `npm install --save *name of module*` in the command line to install these dependencies.
 // You can see what dependencies are currently installed by looking into the `package.json` file.
