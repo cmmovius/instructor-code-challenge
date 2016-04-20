@@ -1,0 +1,7 @@
+<h2>Favorites Index Page</h2>
+<h2>There are {{favorites.length}} favorites</h2>
+{{#each favorites as |favorite index|}}
+<h3>{{favorite.Title}}</h3>
+<img src="{{favorite.Poster}}" alt="{{favorite.Name}}" />
+
+{{/each}}

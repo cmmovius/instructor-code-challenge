@@ -9,14 +9,30 @@ var mongoose = require("./db/connection");
 
 var app = express();
 
+var Favorite = mongoose.model("Favorite");
+
 app.set("port", process.env.PORT || 3000);
 // We use this OR statement here so that when you deploy the app, it can be run on any port your deployment service chooses. When working locally, go to `localhost:3000` to see the app.
 
 // app.use(express.static(path.join(__dirname, '/public')));
 // app.use(bodyParser.json());
-
+app.set("view engine", "hbs");
+app.engine(".hbs", hbs({
+  extname:        ".hbs",
+  partialsDir:    "views/",
+  layoutsDir:     "views/",
+  defaultLayout:  "layout-main"
+}));
 app.use('/public', express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get("/", function(req, res){
+  Favorite.find({}).then(function(favorites){
+    res.render("favorites-index", {
+      favorites: favorites
+    });
+  });
+});
 
 // app.get('/favorites', function(req, res){
 //   var data = fs.readFileSync('./data.json');
