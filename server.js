@@ -1,5 +1,6 @@
 var express = require('express');
-// var fs = require('fs');
+var bodyParser = require("body-parser");
+var fs = require('fs');
 // var path = require('path');
 
 var app = express();
@@ -7,17 +8,17 @@ var app = express();
 app.set("port", process.env.PORT || 3000);
 
 // app.use(express.static(path.join(__dirname, '/public')));
-// app.use(bodyParser.urlencoded({ extended: false }))
 // app.use(bodyParser.json());
 //
-// app.use('/', express.static(path.join(__dirname, 'public'));
+app.use('/public', express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 //
-// app.get('/favorites', function(req, res){
-//   var data = fs.readFileSync('./data.json');
-//   res.setHeader('Content-Type', 'application/json');
-//   res.send(data);
-// ;
-//
+app.get('/favorites', function(req, res){
+  var data = fs.readFileSync('./data.json');
+  res.setHeader('Content-Type', 'application/json');
+  res.send(data);
+});
+
 // app.get('favorites', function(req, res){
 //   if(!req.body.name || !req.body.oid){
 //     res.send("Error");
