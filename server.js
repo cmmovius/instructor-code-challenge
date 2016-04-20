@@ -2,17 +2,20 @@ var express = require('express');
 var bodyParser = require("body-parser");
 var fs = require('fs');
 // var path = require('path');
+// In addition to requiring these modules in this file, you also need to run `npm install --save *name of module*` in the command line to install these dependencies.
+// You can see what dependencies are currently installed by looking into the `package.json` file.
 
 var app = express();
 
 app.set("port", process.env.PORT || 3000);
+// We use this OR statement here so that when you deploy the app, it can be run on any port your deployment service chooses. When working locally, go to `localhost:3000` to see the app.
 
 // app.use(express.static(path.join(__dirname, '/public')));
 // app.use(bodyParser.json());
-//
+
 app.use('/public', express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
-//
+
 app.get('/favorites', function(req, res){
   var data = fs.readFileSync('./data.json');
   res.setHeader('Content-Type', 'application/json');
@@ -34,3 +37,4 @@ app.get('/favorites', function(req, res){
 app.listen(app.get("port"), function(){
   console.log("Listening on port 3000");
 });
+// This is needed so your app knows to connect properly to the localhost.
