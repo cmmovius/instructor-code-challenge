@@ -1,7 +1,8 @@
 var express = require('express');
-var fs = require('fs');
-var hbs = require("express-handlebars");
 var bodyParser = require("body-parser");
+var hbs = require("express-handlebars");
+var mongoose = require("./db/connection");
+// var fs = require('fs');
 // var path = require('path');
 // In addition to requiring these modules in this file, you also need to run `npm install --save *name of module*` in the command line to install these dependencies.
 // You can see what dependencies are currently installed by looking into the `package.json` file.
@@ -17,11 +18,14 @@ app.set("port", process.env.PORT || 3000);
 app.use('/public', express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/favorites', function(req, res){
-  var data = fs.readFileSync('./data.json');
-  res.setHeader('Content-Type', 'application/json');
-  res.send(data);
-});
+// app.get('/favorites', function(req, res){
+//   var data = fs.readFileSync('./data.json');
+//   // res.setHeader('Content-Type', 'application/json');
+//   // res.send(data);
+//   res.render("favorites-index", {
+//     favorites: data
+//   });
+// });
 
 // app.get('favorites', function(req, res){
 //   if(!req.body.name || !req.body.oid){
