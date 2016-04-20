@@ -36,6 +36,10 @@ app.get("/favorites", function(req, res){
   });
 });
 
+app.get("/", function(req, res){
+  res.render("app-welcome");
+});
+
 // This is needed so your app knows to connect properly to the localhost.
 app.listen(app.get("port"), function(){
   console.log("Listening on port 3000");
