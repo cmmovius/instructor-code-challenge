@@ -10,27 +10,33 @@ function apiCall() {
   var keyword = document.querySelector("input[name='keyword']").value;
   var url = "https://www.omdbapi.com/?t="+keyword;
   console.log(url);
-  // $.ajax({
-  //   url: url,
-  //   type: "GET",
-  //   dataType: "json"
-  // }).done(function(response){
-  //   console.log(response);
-  //   // showMovie(response);
-  // }).fail(function(){
-  //   console.log("fail");
-  // }).always(function(){
-  //   console.log("Something happens");
-  // });
+  $.ajax({
+    url: url,
+    type: "GET",
+    dataType: "json"
+  }).done(function(response){
+    console.log(response);
+    showMovie(response);
+  }).fail(function(){
+    console.log("fail");
+  }).always(function(){
+    console.log("Something happens");
+  });
 }
 
-// function showMovie(response){
-//   var movie = $("#movie");
-//   console.log(response.Title);
-//   console.log(response.Year);
-//   movie.append("<h3>" + response.Title+ "<h3>");
-//   movie.append("<img src='"+ response.Poster +"'>");
-//   movie.append("<p> Year: " + response.Year+ "<p>");
-//   movie.append("<p> Rated: " + response.Rated+ "<p>");
-//   movie.append("<p> Actors: " + response.Actors+ "<p>");
-// }
+function showMovie(response){
+  var movie = document.querySelector("#movie");
+  console.log(response.Title);
+  movie.innerHTML += ("<h3>" + response.Title+ "<h3>");
+  movie.innerHTML += ("<img src='"+ response.Poster +"'>");
+  movie.innerHTML += ("<p> Year: " + response.Year+ "<p>");
+  movie.innerHTML += ("<p> Rated: " + response.Rated+ "<p>");
+  movie.innerHTML += ("<p> Actors: " + response.Actors+ "<p>");
+  movie.innerHTML += ("<p> Director: " + response.Director+ "<p>");
+  movie.innerHTML += ("<p> Writer: " + response.Writer+ "<p>");
+  movie.innerHTML += ("<p> Genre: " + response.Genre+ "<p>");
+  movie.innerHTML += ("<p> Plot: " + response.Plot+ "<p>");
+  movie.innerHTML += ("<p> Runtime: " + response.Runtime+ "<p>");
+  movie.innerHTML += ("<p> Released: " + response.Released+ "<p>");
+  movie.innerHTML += ("<p> IMBD Rating: " + response.imdbRating+ "<p>");
+}
