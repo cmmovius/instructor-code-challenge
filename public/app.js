@@ -25,18 +25,24 @@ function apiCall() {
 }
 
 function showMovie(response){
-  var movie = document.querySelector("#movie");
   console.log(response.Title);
+  var movie = document.querySelector("#movie");
   movie.innerHTML += ("<h3>" + response.Title+ "<h3>");
   movie.innerHTML += ("<img src='"+ response.Poster +"'>");
-  movie.innerHTML += ("<p> Year: " + response.Year+ "<p>");
-  movie.innerHTML += ("<p> Rated: " + response.Rated+ "<p>");
-  movie.innerHTML += ("<p> Actors: " + response.Actors+ "<p>");
-  movie.innerHTML += ("<p> Director: " + response.Director+ "<p>");
-  movie.innerHTML += ("<p> Writer: " + response.Writer+ "<p>");
-  movie.innerHTML += ("<p> Genre: " + response.Genre+ "<p>");
-  movie.innerHTML += ("<p> Plot: " + response.Plot+ "<p>");
-  movie.innerHTML += ("<p> Runtime: " + response.Runtime+ "<p>");
-  movie.innerHTML += ("<p> Released: " + response.Released+ "<p>");
-  movie.innerHTML += ("<p> IMBD Rating: " + response.imdbRating+ "<p>");
+
+  var info = document.querySelector("#showMore");
+  info.style.display = "inline";
+  info.addEventListener("click", function(){
+    console.log("clicked");
+    movie.innerHTML += ("<p> Year: " + response.Year+ "<p>");
+    movie.innerHTML += ("<p> Rated: " + response.Rated+ "<p>");
+    movie.innerHTML += ("<p> Actors: " + response.Actors+ "<p>");
+    movie.innerHTML += ("<p> Director: " + response.Director+ "<p>");
+    movie.innerHTML += ("<p> Writer: " + response.Writer+ "<p>");
+    movie.innerHTML += ("<p> Genre: " + response.Genre+ "<p>");
+    movie.innerHTML += ("<p> Plot: " + response.Plot+ "<p>");
+    movie.innerHTML += ("<p> Runtime: " + response.Runtime+ "<p>");
+    movie.innerHTML += ("<p> Released: " + response.Released+ "<p>");
+    movie.innerHTML += ("<p> IMBD Rating: " + response.imdbRating+ "<p>");
+  })
 }
