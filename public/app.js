@@ -30,25 +30,35 @@ function apiCall() {
   });
 }
 
+//This function is performed on line 25 as a result of receiving API data.
 function showMovie(response){
   console.log(response.Title);
+  //Append movie title name and poster image
   var movie = document.querySelector("#movie");
+  movie.innerHTML = null; //Clears previous search queries
   movie.innerHTML += ("<h3>" + response.Title+ "<h3>");
   movie.innerHTML += ("<img src='"+ response.Poster +"'>");
-
+  //Display Show More Info button.
   var info = document.querySelector("#showMore");
   info.style.display = "inline";
+  //When Show More Info button is clicked, append remainder of movie data.
   info.addEventListener("click", function(){
     console.log("clicked");
-    movie.innerHTML += ("<p> Year: " + response.Year+ "<p>");
-    movie.innerHTML += ("<p> Rated: " + response.Rated+ "<p>");
-    movie.innerHTML += ("<p> Actors: " + response.Actors+ "<p>");
-    movie.innerHTML += ("<p> Director: " + response.Director+ "<p>");
-    movie.innerHTML += ("<p> Writer: " + response.Writer+ "<p>");
-    movie.innerHTML += ("<p> Genre: " + response.Genre+ "<p>");
-    movie.innerHTML += ("<p> Plot: " + response.Plot+ "<p>");
-    movie.innerHTML += ("<p> Runtime: " + response.Runtime+ "<p>");
-    movie.innerHTML += ("<p> Released: " + response.Released+ "<p>");
-    movie.innerHTML += ("<p> IMBD Rating: " + response.imdbRating+ "<p>");
+    movie.innerHTML = null; //Clears previous search queries
+    movie.innerHTML += ("<h3>" + response.Title+ "<h3>");
+    movie.innerHTML += ("<img src='"+ response.Poster +"'>");
+    movie.innerHTML += ("<p> Year: " + response.Year + "<p>");
+    movie.innerHTML += ("<input[name='"+ response.Name +"']>");
+    movie.innerHTML += ("<p> Rated: " + response.Rated + "<p>");
+    movie.innerHTML += ("<p> Actors: " + response.Actors + "<p>");
+    movie.innerHTML += ("<p> Director: " + response.Director + "<p>");
+    movie.innerHTML += ("<p> Writer: " + response.Writer + "<p>");
+    movie.innerHTML += ("<p> Genre: " + response.Genre + "<p>");
+    movie.innerHTML += ("<p> Plot: " + response.Plot + "<p>");
+    movie.innerHTML += ("<p> Runtime: " + response.Runtime + "<p>");
+    movie.innerHTML += ("<p> Released: " + response.Released + "<p>");
+    movie.innerHTML += ("<p> IMDB Rating: " + response.imdbRating + "<p>");
+    movie.innerHTML += ("<p> Awards: " + response.Awards + "<p>");
+    movie.innerHTML += ("<p> Language(s): " + response.Language + "<p>");
   });
 }
