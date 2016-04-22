@@ -6,4 +6,9 @@
 <!-- The showMore button is hidden until a user searches for a movie -->
 <button type="button" name="button" id="showMore">Show More Info</button>
 <!-- Our search result will be rendered in the movie div -->
+<form action="/favorites" method="post" id="form">
+  <input type="text" name="favorite[Title]" placeholder="Title" id="#title"/>
+  <input type="text" name="favorite[Poster]" placeholder="Poster URL" id="poster"/>
+  <button type="submit">Add to Favorites</button>
+</form>
 <div id="movie"></div>

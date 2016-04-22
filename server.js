@@ -36,6 +36,12 @@ app.get("/favorites", function(req, res){
   });
 });
 
+app.post("/favorites", function(req, res){
+  Favorite.create(req.body.favorite).then(function(favorite){
+    res.redirect("/favorites");
+  });
+});
+
 app.get("/", function(req, res){
   res.render("app-welcome");
 });

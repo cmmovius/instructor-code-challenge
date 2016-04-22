@@ -2,6 +2,6 @@
 <!-- This is a handebars for each loop. It states the for each favorited movie in the favorites database, display the title of the movie and the poster image. -->
 {{#each favorites as |favorite index|}}
 <h3>{{favorite.Title}}</h3>
-<img src="{{favorite.Poster}}" alt="{{favorite.Name}}" />
+<img src="{{favorite.Poster}}" alt="{{favorite.Title}}" />
 
 {{/each}}
