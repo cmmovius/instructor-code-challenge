@@ -23,6 +23,7 @@ function apiCall() {
   }).done(function(response){
     console.log(response);
     showMovie(response); //Upon a successful call, perform this function.
+    addFavorite(response);
   }).fail(function(){
     console.log("fail");
   }).always(function(){
@@ -61,4 +62,15 @@ function showMovie(response){
     movie.innerHTML += ("<p> Awards: " + response.Awards + "<p>");
     movie.innerHTML += ("<p> Language(s): " + response.Language + "<p>");
   });
+}
+
+function addFavorite(response) {
+  var title = document.querySelector("#title");
+  var poster = document.querySelector("#poster");
+  title.value = null;
+  poster.value = null;
+  console.log(title);
+  console.log(poster);
+  title.value += response.Title;
+  poster.value += response.Poster;
 }
