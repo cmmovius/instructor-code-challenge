@@ -2,6 +2,7 @@ body {
   text-align: center;
 }
 
+/*When a user searches for a movie, the display changes from none to inline*/
 #showMore {
   display: none;
 }
