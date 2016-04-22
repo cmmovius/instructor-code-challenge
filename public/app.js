@@ -64,11 +64,12 @@ function showMovie(response){
   });
 }
 
+// This function is called on line 25 so the values of our form are from the API call.
 function addFavorite(response) {
   var title = document.querySelector("#title");
   var poster = document.querySelector("#poster");
-  title.value = null;
-  poster.value = null;
+  title.value = null; // Clears out previous search queries
+  poster.value = null; // Clears out previous search queries
   console.log(title);
   console.log(poster);
   title.value += response.Title;

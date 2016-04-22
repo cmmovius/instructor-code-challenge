@@ -28,6 +28,7 @@ app.use('/public', express.static('public'));
 //body-parser is a middleware that helps our data and views talk to each other.
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// This request renders a view of all of our favorite movies in the database.
 app.get("/favorites", function(req, res){
   Favorite.find({}).then(function(favorites){
     res.render("favorites-index", {
@@ -36,12 +37,14 @@ app.get("/favorites", function(req, res){
   });
 });
 
+// This request adds the queried movie to our list of favorites and redirects the user to the favorites index view.
 app.post("/favorites", function(req, res){
   Favorite.create(req.body.favorite).then(function(favorite){
     res.redirect("/favorites");
   });
 });
 
+// This is our homepage.
 app.get("/", function(req, res){
   res.render("app-welcome");
 });
